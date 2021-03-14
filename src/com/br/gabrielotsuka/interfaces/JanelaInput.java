@@ -5,21 +5,32 @@ import java.awt.*;
 
 public abstract class JanelaInput extends JFrame {
 
-    protected Dimension dimension = new Dimension(480, 300);
-    protected JLabel cabecalho = new JLabel();
-    protected JPanel botoes = new JPanel();
+    protected JLabel rotuloCabecalho = new JLabel();
+    protected JLabel rotuloTitulo = new JLabel();
+    protected JLabel rotuloAno = new JLabel();
 
-    abstract void montaCabecalho();
-    abstract void montaBotoes(String trocaTela);
+    protected JTextField campoTitulo = new JTextField();
+    protected JTextField campoAno = new JTextField();
 
-    protected void botoesLayout() {
-        botoes.setVisible(true);
-        botoes.setBounds(10, 175, 460,80);
-        botoes.setLayout(new GridLayout(1,3,10,10));
-        JButton botaoIncluir = new JButton("Incluir");
-        JButton botaoListagem = new JButton("Listagem");
-        botoes.add(botaoIncluir);
-        botoes.add(botaoListagem);
+    protected JPanel painelBotoes = new JPanel();
+
+    protected JButton botaoIncluir = new JButton("Incluir");
+    protected JButton botaoListagem = new JButton("Listagem");
+
+    protected void configuraRotulo(JLabel label, String texto, Integer fontSize) {
+        label.setText(texto);
+        label.setFont(new Font("", Font.PLAIN, fontSize));
+        label.setHorizontalAlignment(JLabel.LEFT);
+    }
+
+    protected void montaBotoes(JButton botaoTroca) {
+        painelBotoes.setVisible(true);
+        painelBotoes.setBounds(10, 175, 460,80);
+        painelBotoes.setLayout(new GridLayout(1,3,10,10));
+        painelBotoes.add(botaoIncluir);
+        painelBotoes.add(botaoTroca);
+        painelBotoes.add(botaoListagem);
+        add(painelBotoes);
     }
 }
 
