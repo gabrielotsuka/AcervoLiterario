@@ -1,4 +1,4 @@
-package com.br.gabrielotsuka.interfaces;
+package com.br.gabrielotsuka.janelas;
 
 import javax.swing.*;
 import java.awt.*;

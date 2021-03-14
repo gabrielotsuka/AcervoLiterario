@@ -1,8 +1,8 @@
 package com.br.gabrielotsuka;
 
-import com.br.gabrielotsuka.interfaces.JanelaListagem;
-import com.br.gabrielotsuka.interfaces.JanelaLivros;
-import com.br.gabrielotsuka.interfaces.JanelaRevista;
+import com.br.gabrielotsuka.janelas.JanelaListagem;
+import com.br.gabrielotsuka.janelas.JanelaLivros;
+import com.br.gabrielotsuka.janelas.JanelaRevista;
 
 public class Main {
 
