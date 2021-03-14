@@ -10,6 +10,9 @@ public class Livro extends ObraLiteraria {
 
     @Override
     public String toString() {
-        return "Livro:\n   Titulo: " + titulo + "\n   Autor: " + autor + "\n   Ano: " + ano + "\n\n";
+        return "Livro:" +
+                "\n   Titulo: " + titulo +
+                "\n   Autor: " + autor +
+                "\n   Ano: " + ano + "\n\n";
     }
 }

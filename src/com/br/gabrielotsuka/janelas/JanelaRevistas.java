@@ -1,11 +1,12 @@
 package com.br.gabrielotsuka.janelas;
 
+import com.br.gabrielotsuka.dados.Revista;
 import com.br.gabrielotsuka.repositorio.Listagem;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 
-public class JanelaRevista extends JanelaInput {
+public class JanelaRevistas extends JanelaInput {
 
     JLabel rotuloOrgao = new JLabel();
     JLabel rotuloVolume = new JLabel();
@@ -17,10 +18,8 @@ public class JanelaRevista extends JanelaInput {
 
     JButton botaoLivros = new JButton("Livros");
 
-    Listagem listagem;
-
-    public JanelaRevista(Listagem listagem) {
-        this.listagem = listagem;
+    public JanelaRevistas(Listagem listagem) {
+        super(listagem);
         montaAno();
         montaBotoes(botaoLivros);
         montaCabecalho("Revistas");
@@ -66,12 +65,32 @@ public class JanelaRevista extends JanelaInput {
     @Override
     public void actionPerformed(ActionEvent e) {
         Object source = e.getSource();
-        if (source.equals(botaoLivros)) {
-            dispose();
-            new JanelaLivros(listagem);
-        } else if (source.equals(botaoListagem)) {
-            dispose();
-            new JanelaListagem(listagem);
-        }
+        if (source.equals(botaoLivros))
+            trocaParaJanelaLivros();
+        else if (source.equals(botaoListagem))
+            trocaParaJanelaListagem();
+        else if (source.equals(botaoIncluir))
+            incluirRevistaNoAcervo();
+    }
+
+    private void trocaParaJanelaLivros() {
+        dispose();
+        new JanelaLivros(listagem);
+    }
+
+    private void incluirRevistaNoAcervo() {
+        Revista revista = new Revista(
+                campoTitulo.getText(), campoAno.getText(), campoOrgao.getText(),
+                campoVolume.getText(), campoNumero.getText());
+        incluirObraNoAcervo(revista);
+        limpaCampos();
+    }
+
+    private void limpaCampos() {
+        campoAno.setText("");
+        campoTitulo.setText("");
+        campoOrgao.setText("");
+        campoVolume.setText("");
+        campoNumero.setText("");
     }
 }

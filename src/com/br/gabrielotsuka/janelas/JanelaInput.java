@@ -1,5 +1,9 @@
 package com.br.gabrielotsuka.janelas;
 
+import com.br.gabrielotsuka.dados.ObraLiteraria;
+import com.br.gabrielotsuka.repositorio.Listagem;
+import com.br.gabrielotsuka.servicos.ServicoObraLiteraria;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionListener;
@@ -17,6 +21,14 @@ public abstract class JanelaInput extends JFrame implements ActionListener {
 
     protected JButton botaoIncluir = new JButton("Incluir");
     protected JButton botaoListagem = new JButton("Listagem");
+
+    protected Listagem listagem;
+    protected ServicoObraLiteraria servicoObraLiteraria;
+
+    public JanelaInput(Listagem listagem) {
+        this.listagem = listagem;
+        servicoObraLiteraria = new ServicoObraLiteraria(listagem);
+    }
 
     protected void configuraRotulo(JLabel label, String texto, Integer fontSize) {
         label.setText(texto);
@@ -58,5 +70,15 @@ public abstract class JanelaInput extends JFrame implements ActionListener {
         campoTitulo.setBounds(90, 50, 380, 25);
         add(campoTitulo);
     }
+
+    protected void trocaParaJanelaListagem() {
+        dispose();
+        new JanelaListagem(listagem);
+    }
+
+    protected void incluirObraNoAcervo(ObraLiteraria obraLiteraria) {
+        servicoObraLiteraria.adicionaObraLiteraria(obraLiteraria);
+    }
+
 }
 

@@ -2,7 +2,6 @@ package com.br.gabrielotsuka.janelas;
 
 import com.br.gabrielotsuka.dados.Livro;
 import com.br.gabrielotsuka.repositorio.Listagem;
-import com.br.gabrielotsuka.servicos.ServicoLivros;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
@@ -15,12 +14,8 @@ public class JanelaLivros extends JanelaInput {
 
     JButton botaoRevistas = new JButton("Revistas");
 
-    Listagem listagem;
-    ServicoLivros servicoLivros;
-
     public JanelaLivros(Listagem listagem) {
-        this.listagem = listagem;
-        servicoLivros = new ServicoLivros(listagem);
+        super(listagem);
         montaCabecalho("Livros");
         montaAno();
         montaAutor();
@@ -49,19 +44,27 @@ public class JanelaLivros extends JanelaInput {
     public void actionPerformed(ActionEvent e) {
         Object source = e.getSource();
         if(source.equals(botaoRevistas)) {
-            dispose();
-            new JanelaRevista(listagem);
+            trocaParaJanelaRevistas();
         } else if (source.equals(botaoListagem)) {
-            dispose();
-            new JanelaListagem(listagem);
+            trocaParaJanelaListagem();
         } else if (source.equals(botaoIncluir)) {
-            incluirLivro();
+            incluirLivroNoAcervo();
         }
     }
 
-    private void incluirLivro() {
-        Livro livro = new Livro(campoAutor.getText(), campoTitulo.getText(), campoAno.getText());
-        servicoLivros.adicionaLivro(livro);
+    private void trocaParaJanelaRevistas() {
+        dispose();
+        new JanelaRevistas(listagem);
+    }
+
+    private void incluirLivroNoAcervo() {
+        Livro livro = new Livro(
+                campoAutor.getText(), campoTitulo.getText(), campoAno.getText());
+        incluirObraNoAcervo(livro);
+        limpaCampos();
+    }
+
+    private void limpaCampos() {
         campoAutor.setText("");
         campoAno.setText("");
         campoTitulo.setText("");

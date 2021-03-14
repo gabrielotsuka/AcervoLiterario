@@ -23,6 +23,7 @@ public class JanelaListagem extends JFrame {
         areaTexto.setBorder(BorderFactory.createBevelBorder(1));
         areaTexto.setFont(new Font("", Font.PLAIN, 17));
         areaTexto.setEditable(false);
+        areaTexto.setCaretPosition(0);
 
         return areaTexto;
     }

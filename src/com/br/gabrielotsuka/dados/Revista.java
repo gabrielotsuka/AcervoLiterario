@@ -11,4 +11,14 @@ public class Revista extends ObraLiteraria {
         this.volume = volume;
         this.numero = numero;
     }
+
+    @Override
+    public String toString() {
+        return "Revista:" +
+                "\n   Titulo: " + titulo +
+                "\n   Ano: " + ano +
+                "\n   Orgao: " + orgao +
+                "\n   Volume: " + volume +
+                "\n   Numero: " + numero + "\n\n";
+    }
 }
