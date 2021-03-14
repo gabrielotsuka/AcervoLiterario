@@ -16,14 +16,30 @@ public class JanelaRevista extends JanelaInput{
     JButton botaoLivros = new JButton("Livros");
 
     public JanelaRevista() {
-        montaCabecalho();
-        montaTitulo();
-        montaOrgao();
-        montaVolume();
-        montaNumero();
         montaAno();
         montaBotoes(botaoLivros);
+        montaCabecalho();
+        montaNumero();
+        montaOrgao();
+        montaTitulo();
+        montaVolume();
+
         montaFrame();
+    }
+
+    private void montaAno() {
+        configuraRotulo(rotuloAno, "Ano:", 20);
+        rotuloAno.setBounds(325,130, 50, 25);
+        add(rotuloAno);
+        campoAno.setBounds(375, 130, 95, 25);
+        add(campoAno);
+    }
+
+    private void montaCabecalho() {
+        configuraRotulo(rotuloCabecalho, "Revistas", 25);
+        rotuloCabecalho.setHorizontalAlignment(SwingConstants.CENTER);
+        rotuloCabecalho.setBounds(0,0, 480, 25);
+        add(rotuloCabecalho);
     }
 
     private void montaNumero() {
@@ -34,19 +50,12 @@ public class JanelaRevista extends JanelaInput{
         add(campoNumero);
     }
 
-    private void montaVolume() {
-        configuraRotulo(rotuloVolume, "Vol.:", 20);
-        rotuloVolume.setBounds(20,130, 65, 25);
-        add(rotuloVolume);
-        campoVolume.setBounds(90, 130, 60, 25);
-        add(campoVolume);
-    }
-
-    private void montaCabecalho() {
-        configuraRotulo(rotuloCabecalho, "Revistas", 25);
-        rotuloCabecalho.setHorizontalAlignment(SwingConstants.CENTER);
-        rotuloCabecalho.setBounds(0,0, 480, 25);
-        add(rotuloCabecalho);
+    private void montaOrgao() {
+        configuraRotulo(rotuloOrgao, "Org:", 20);
+        rotuloOrgao.setBounds(20,90, 65, 25);
+        add(rotuloOrgao);
+        campoOrgao.setBounds(90, 90, 380, 25);
+        add(campoOrgao);
     }
 
     private void montaTitulo() {
@@ -57,20 +66,12 @@ public class JanelaRevista extends JanelaInput{
         add(campoTitulo);
     }
 
-    private void montaOrgao() {
-        configuraRotulo(rotuloOrgao, "Org:", 20);
-        rotuloOrgao.setBounds(20,90, 65, 25);
-        add(rotuloOrgao);
-        campoOrgao.setBounds(90, 90, 380, 25);
-        add(campoOrgao);
-    }
-
-    private void montaAno() {
-        configuraRotulo(rotuloAno, "Ano:", 20);
-        rotuloAno.setBounds(325,130, 50, 25);
-        add(rotuloAno);
-        campoAno.setBounds(375, 130, 95, 25);
-        add(campoAno);
+    private void montaVolume() {
+        configuraRotulo(rotuloVolume, "Vol.:", 20);
+        rotuloVolume.setBounds(20,130, 65, 25);
+        add(rotuloVolume);
+        campoVolume.setBounds(90, 130, 60, 25);
+        add(campoVolume);
     }
 
     private void montaFrame() {
