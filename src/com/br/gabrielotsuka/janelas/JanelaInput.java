@@ -2,8 +2,9 @@ package com.br.gabrielotsuka.janelas;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionListener;
 
-public abstract class JanelaInput extends JFrame {
+public abstract class JanelaInput extends JFrame implements ActionListener {
 
     protected JLabel rotuloCabecalho = new JLabel();
     protected JLabel rotuloTitulo = new JLabel();
@@ -29,6 +30,8 @@ public abstract class JanelaInput extends JFrame {
         painelBotoes.add(botaoIncluir);
         painelBotoes.add(botaoTroca);
         painelBotoes.add(botaoListagem);
+        botaoListagem.addActionListener(this);
+
         add(painelBotoes);
     }
 

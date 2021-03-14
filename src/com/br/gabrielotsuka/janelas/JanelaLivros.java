@@ -1,8 +1,9 @@
 package com.br.gabrielotsuka.janelas;
 
 import javax.swing.*;
+import java.awt.event.ActionEvent;
 
-public class JanelaLivros extends JanelaInput{
+public class JanelaLivros extends JanelaInput {
 
     JLabel rotuloAutor = new JLabel();
 
@@ -11,6 +12,7 @@ public class JanelaLivros extends JanelaInput{
     JButton botaoRevistas = new JButton("Revistas");
 
     public JanelaLivros() {
+        botaoRevistas.addActionListener(this);
         montaCabecalho("Livros");
         montaAno();
         montaAutor();
@@ -35,4 +37,14 @@ public class JanelaLivros extends JanelaInput{
         add(campoAno);
     }
 
+    @Override
+    public void actionPerformed(ActionEvent e) {
+        dispose();
+        Object source = e.getSource();
+        if(source.equals(botaoRevistas)) {
+            new JanelaRevista();
+        } else if (source.equals(botaoListagem)) {
+            new JanelaListagem();
+        }
+    }
 }

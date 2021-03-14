@@ -1,8 +1,9 @@
 package com.br.gabrielotsuka.janelas;
 
 import javax.swing.*;
+import java.awt.event.ActionEvent;
 
-public class JanelaRevista extends JanelaInput{
+public class JanelaRevista extends JanelaInput {
 
     JLabel rotuloOrgao = new JLabel();
     JLabel rotuloVolume = new JLabel();
@@ -22,7 +23,7 @@ public class JanelaRevista extends JanelaInput{
         montaOrgao();
         montaTitulo();
         montaVolume();
-
+        botaoLivros.addActionListener(this);
         montaFrameInput();
     }
 
@@ -56,5 +57,16 @@ public class JanelaRevista extends JanelaInput{
         add(rotuloVolume);
         campoVolume.setBounds(90, 130, 60, 25);
         add(campoVolume);
+    }
+
+    @Override
+    public void actionPerformed(ActionEvent e) {
+        dispose();
+        Object source = e.getSource();
+        if (source.equals(botaoLivros)) {
+            new JanelaLivros();
+        } else if (source.equals(botaoListagem)) {
+            new JanelaListagem();
+        }
     }
 }
