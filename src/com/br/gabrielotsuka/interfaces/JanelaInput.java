@@ -32,5 +32,28 @@ public abstract class JanelaInput extends JFrame {
         painelBotoes.add(botaoListagem);
         add(painelBotoes);
     }
+
+    protected void montaCabecalho(String texto) {
+        configuraRotulo(rotuloCabecalho, texto, 25);
+        rotuloCabecalho.setHorizontalAlignment(SwingConstants.CENTER);
+        rotuloCabecalho.setBounds(0,15, 480, 25);
+        add(rotuloCabecalho);
+    }
+
+    protected void montaTitulo() {
+        configuraRotulo(rotuloTitulo, "Titulo:", 20);
+        rotuloTitulo.setBounds(20,50, 65, 25);
+        add(rotuloTitulo);
+        campoTitulo.setBounds(90, 50, 380, 25);
+        add(campoTitulo);
+    }
+
+    protected void montaFrame() {
+        setLayout(null);
+        setVisible(true);
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setResizable(false);
+        setSize(new Dimension(480, 300));
+    }
 }
 

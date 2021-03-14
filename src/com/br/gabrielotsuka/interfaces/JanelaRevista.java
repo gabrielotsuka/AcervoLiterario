@@ -1,7 +1,6 @@
 package com.br.gabrielotsuka.interfaces;
 
 import javax.swing.*;
-import java.awt.*;
 
 public class JanelaRevista extends JanelaInput{
 
@@ -18,7 +17,7 @@ public class JanelaRevista extends JanelaInput{
     public JanelaRevista() {
         montaAno();
         montaBotoes(botaoLivros);
-        montaCabecalho();
+        montaCabecalho("Revistas");
         montaNumero();
         montaOrgao();
         montaTitulo();
@@ -33,13 +32,6 @@ public class JanelaRevista extends JanelaInput{
         add(rotuloAno);
         campoAno.setBounds(375, 130, 95, 25);
         add(campoAno);
-    }
-
-    private void montaCabecalho() {
-        configuraRotulo(rotuloCabecalho, "Revistas", 25);
-        rotuloCabecalho.setHorizontalAlignment(SwingConstants.CENTER);
-        rotuloCabecalho.setBounds(0,0, 480, 25);
-        add(rotuloCabecalho);
     }
 
     private void montaNumero() {
@@ -58,27 +50,11 @@ public class JanelaRevista extends JanelaInput{
         add(campoOrgao);
     }
 
-    private void montaTitulo() {
-        configuraRotulo(rotuloTitulo, "Titulo:", 20);
-        rotuloTitulo.setBounds(20,50, 65, 25);
-        add(rotuloTitulo);
-        campoTitulo.setBounds(90, 50, 380, 25);
-        add(campoTitulo);
-    }
-
     private void montaVolume() {
         configuraRotulo(rotuloVolume, "Vol.:", 20);
         rotuloVolume.setBounds(20,130, 65, 25);
         add(rotuloVolume);
         campoVolume.setBounds(90, 130, 60, 25);
         add(campoVolume);
-    }
-
-    private void montaFrame() {
-        setLayout(null);
-        setVisible(true);
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setResizable(false);
-        setSize(new Dimension(480, 300));
     }
 }
