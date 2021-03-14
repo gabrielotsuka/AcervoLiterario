@@ -23,7 +23,7 @@ public class JanelaRevista extends JanelaInput{
         montaTitulo();
         montaVolume();
 
-        montaFrame();
+        montaFrameInput();
     }
 
     private void montaAno() {

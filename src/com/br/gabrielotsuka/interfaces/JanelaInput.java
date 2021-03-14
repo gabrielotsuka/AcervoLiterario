@@ -24,7 +24,6 @@ public abstract class JanelaInput extends JFrame {
     }
 
     protected void montaBotoes(JButton botaoTroca) {
-        painelBotoes.setVisible(true);
         painelBotoes.setBounds(10, 175, 460,80);
         painelBotoes.setLayout(new GridLayout(1,3,10,10));
         painelBotoes.add(botaoIncluir);
@@ -40,7 +39,7 @@ public abstract class JanelaInput extends JFrame {
         add(rotuloCabecalho);
     }
 
-    protected void montaFrame() {
+    protected void montaFrameInput() {
         setLayout(null);
         setVisible(true);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

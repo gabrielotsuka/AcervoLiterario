@@ -16,7 +16,7 @@ public class JanelaLivros extends JanelaInput{
         montaAutor();
         montaTitulo();
         montaBotoes(botaoRevistas);
-        montaFrame();
+        montaFrameInput();
     }
 
     private void montaAutor() {
