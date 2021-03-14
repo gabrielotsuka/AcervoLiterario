@@ -1,5 +1,7 @@
 package com.br.gabrielotsuka.janelas;
 
+import com.br.gabrielotsuka.repositorio.Listagem;
+
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 
@@ -15,7 +17,10 @@ public class JanelaRevista extends JanelaInput {
 
     JButton botaoLivros = new JButton("Livros");
 
-    public JanelaRevista() {
+    Listagem listagem;
+
+    public JanelaRevista(Listagem listagem) {
+        this.listagem = listagem;
         montaAno();
         montaBotoes(botaoLivros);
         montaCabecalho("Revistas");
@@ -23,7 +28,6 @@ public class JanelaRevista extends JanelaInput {
         montaOrgao();
         montaTitulo();
         montaVolume();
-        botaoLivros.addActionListener(this);
         montaFrameInput();
     }
 
@@ -61,12 +65,13 @@ public class JanelaRevista extends JanelaInput {
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        dispose();
         Object source = e.getSource();
         if (source.equals(botaoLivros)) {
-            new JanelaLivros();
+            dispose();
+            new JanelaLivros(listagem);
         } else if (source.equals(botaoListagem)) {
-            new JanelaListagem();
+            dispose();
+            new JanelaListagem(listagem);
         }
     }
 }

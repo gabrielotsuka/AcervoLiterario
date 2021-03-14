@@ -1,5 +1,7 @@
 package com.br.gabrielotsuka.janelas;
 
+import com.br.gabrielotsuka.repositorio.Listagem;
+
 import javax.swing.*;
 import java.awt.*;
 
@@ -7,33 +9,22 @@ public class JanelaListagem extends JFrame {
 
     JLabel rotuloCabecalho = new JLabel("Listagem");
 
-
-    public JanelaListagem() {
-        String teste = "Livro: As aventuras da abobrinha para testar o scrollPanel horizontal Autor Gabriel Otsuka Ano 2021\n" +
-                "Revista: TituloA OrgA VolA NroA AnoA\n" +
-                "Revista: TituloB OrgB VolB NroB AnoB\n" +
-                "Revista: TituloC OrgC VolC NroC AnoC\n" +
-                "Revista: TituloC OrgC VolC NroC AnoC\n" +
-                "Revista: TituloC OrgC VolC NroC AnoC\n" +
-                "Revista: TituloC OrgC VolC NroC AnoC\n" +
-                "Revista: TituloC OrgC VolC NroC AnoC\n" +
-                "Revista: TituloC OrgC VolC NroC AnoC\n" +
-                "Revista: TituloC OrgC VolC NroC AnoC\n" +
-                "Livro: TituloB AutorB Ano B";
+    public JanelaListagem(Listagem listagem) {
         montaCabecalho();
-        montaAreaTexto(teste);
+        JTextArea areaTexto = montaAreaTexto(listagem.getListagem());
+        montaPainelScroll(areaTexto);
         montaFrameOutput();
     }
 
-    private void montaAreaTexto(String texto) {
+    private JTextArea montaAreaTexto(String texto) {
         JTextArea areaTexto = new JTextArea();
         areaTexto.setText(texto);
         areaTexto.setWrapStyleWord(true);
         areaTexto.setBorder(BorderFactory.createBevelBorder(1));
-        areaTexto.setFont(new Font("", Font.PLAIN, 18));
+        areaTexto.setFont(new Font("", Font.PLAIN, 17));
         areaTexto.setEditable(false);
 
-        montaPainelScroll(areaTexto);
+        return areaTexto;
     }
 
     private void montaPainelScroll(JTextArea areaTexto) {

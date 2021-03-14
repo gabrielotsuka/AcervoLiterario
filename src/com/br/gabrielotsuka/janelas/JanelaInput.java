@@ -31,7 +31,8 @@ public abstract class JanelaInput extends JFrame implements ActionListener {
         painelBotoes.add(botaoTroca);
         painelBotoes.add(botaoListagem);
         botaoListagem.addActionListener(this);
-
+        botaoIncluir.addActionListener(this);
+        botaoTroca.addActionListener(this);
         add(painelBotoes);
     }
 
