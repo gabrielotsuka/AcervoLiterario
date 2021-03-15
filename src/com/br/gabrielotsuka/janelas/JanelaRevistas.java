@@ -74,7 +74,6 @@ public class JanelaRevistas extends JanelaInput {
             trocaParaJanelaListagem();
         else if (source.equals(botaoIncluir)) {
             incluirRevistaNoAcervo();
-            limpaCampos();
         }
     }
 
@@ -84,13 +83,26 @@ public class JanelaRevistas extends JanelaInput {
     }
 
     private void incluirRevistaNoAcervo() {
-        String titulo = campoTitulo.getText();
-        int ano = Integer.parseInt(campoAno.getText());
-        String orgao = campoOrgao.getText();
-        int volume = Integer.parseInt(campoVolume.getText());
-        int numero = Integer.parseInt(campoNumero.getText());
+        try {
+            String titulo = campoTitulo.getText();
+            int ano = Integer.parseInt(campoAno.getText());
+            String orgao = campoOrgao.getText();
+            int volume = Integer.parseInt(campoVolume.getText());
+            int numero = Integer.parseInt(campoNumero.getText());
 
-        servicoRevista.adicionaRevista(titulo, ano, orgao, volume, numero);
+            servicoRevista.adicionaRevista(titulo, ano, orgao, volume, numero);
+
+            JOptionPane.showMessageDialog(this, "Obra literária adicionada.", "Sucesso", JOptionPane.INFORMATION_MESSAGE);
+            limpaCampos();
+        } catch (NumberFormatException erroParse) {
+            JOptionPane.showMessageDialog(
+                    this,
+                    "Campos volume, número e ano devem ser números válidos",
+                    "Erro",
+                    JOptionPane.ERROR_MESSAGE);
+        } catch (Exception erroCampo) {
+            JOptionPane.showMessageDialog(this, erroCampo.getMessage(), "Erro", JOptionPane.ERROR_MESSAGE);
+        }
     }
 
     private void limpaCampos() {

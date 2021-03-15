@@ -52,7 +52,6 @@ public class JanelaLivros extends JanelaInput {
             trocaParaJanelaListagem();
         } else if (source.equals(botaoIncluir)) {
             incluirLivroNoAcervo();
-            limpaCampos();
         }
     }
 
@@ -62,10 +61,21 @@ public class JanelaLivros extends JanelaInput {
     }
 
     private void incluirLivroNoAcervo() {
-        String autor = campoAutor.getText();
-        String titulo = campoTitulo.getText();
-        int ano = Integer.parseInt(campoAno.getText());
-        servicoLivro.adicionaLivro(autor, titulo, ano);
+        try {
+            String autor = campoAutor.getText();
+            String titulo = campoTitulo.getText();
+            int ano = Integer.parseInt(campoAno.getText());
+            servicoLivro.adicionaLivro(autor, titulo, ano);
+            limpaCampos();
+        } catch (NumberFormatException erroParse) {
+            JOptionPane.showMessageDialog(
+                    this,
+                    "Campo ano deve ser um número válido",
+                    "Erro",
+                    JOptionPane.ERROR_MESSAGE);
+        } catch (Exception erroCampo) {
+            JOptionPane.showMessageDialog(this, erroCampo.getMessage(), "Erro", JOptionPane.ERROR_MESSAGE);
+        }
     }
 
     private void limpaCampos() {
