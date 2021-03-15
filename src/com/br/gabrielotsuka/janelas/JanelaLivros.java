@@ -51,7 +51,10 @@ public class JanelaLivros extends JanelaInput {
         } else if (source.equals(botaoListagem)) {
             trocaParaJanelaListagem();
         } else if (source.equals(botaoIncluir)) {
-            incluirLivroNoAcervo();
+            try {
+                validaParseInteiro();
+                incluirLivroNoAcervo();
+            } catch (Exception ignored) {}
         }
     }
 
@@ -60,21 +63,29 @@ public class JanelaLivros extends JanelaInput {
         new JanelaRevistas(listagem);
     }
 
-    private void incluirLivroNoAcervo() {
+    private void validaParseInteiro() throws Exception {
         try {
-            String autor = campoAutor.getText();
-            String titulo = campoTitulo.getText();
-            int ano = Integer.parseInt(campoAno.getText());
-            servicoLivro.adicionaLivro(autor, titulo, ano);
-            limpaCampos();
+            Integer.parseInt(campoAno.getText());
         } catch (NumberFormatException erroParse) {
             JOptionPane.showMessageDialog(
                     this,
                     "Campo ano deve ser um número válido",
                     "Erro",
                     JOptionPane.ERROR_MESSAGE);
-        } catch (Exception erroCampo) {
-            JOptionPane.showMessageDialog(this, erroCampo.getMessage(), "Erro", JOptionPane.ERROR_MESSAGE);
+            throw new Exception();
+        }
+    }
+
+    private void incluirLivroNoAcervo() {
+        int ano = Integer.parseInt(campoAno.getText());
+        String autor = campoAutor.getText();
+        String titulo = campoTitulo.getText();
+        try {
+            servicoLivro.adicionaLivro(autor, titulo, ano);
+            JOptionPane.showMessageDialog(this, "Livro adicionado ao acervo.", "Sucesso", JOptionPane.INFORMATION_MESSAGE);
+            limpaCampos();
+        } catch (Exception campoInvalido) {
+            JOptionPane.showMessageDialog(this, campoInvalido.getMessage(), "Erro", JOptionPane.ERROR_MESSAGE);
         }
     }
 

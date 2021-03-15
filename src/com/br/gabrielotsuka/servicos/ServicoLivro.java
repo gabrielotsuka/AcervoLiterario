@@ -18,8 +18,8 @@ public class ServicoLivro {
     }
 
     private void validaCamposLivro(String autor, String titulo, int ano) throws Exception {
+        ValidadorObraLiteraria.validaAno(ano);
         ValidadorObraLiteraria.validaStringVazia(autor, "Autor");
         ValidadorObraLiteraria.validaStringVazia(titulo, "Titulo");
-        ValidadorObraLiteraria.validaAno(ano);
     }
 }

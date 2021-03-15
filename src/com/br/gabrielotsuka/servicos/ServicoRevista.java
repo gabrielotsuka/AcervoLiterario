@@ -18,10 +18,10 @@ public class ServicoRevista {
     }
 
     private void validaCamposRevista(String titulo, int ano, String orgao, int volume, int numero) throws Exception {
-        ValidadorObraLiteraria.validaStringVazia(titulo, "Titulo");
-        ValidadorObraLiteraria.validaStringVazia(orgao, "Orgão");
-        ValidadorObraLiteraria.validaAno(ano);
         ValidadorObraLiteraria.validaNegativo(volume, "Volume");
         ValidadorObraLiteraria.validaNegativo(numero, "Número");
+        ValidadorObraLiteraria.validaAno(ano);
+        ValidadorObraLiteraria.validaStringVazia(titulo, "Titulo");
+        ValidadorObraLiteraria.validaStringVazia(orgao, "Orgão");
     }
 }

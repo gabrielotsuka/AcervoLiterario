@@ -66,14 +66,17 @@ public class JanelaRevistas extends JanelaInput {
     }
 
     @Override
-    public void actionPerformed(ActionEvent e) {
-        Object source = e.getSource();
+    public void actionPerformed(ActionEvent event) {
+        Object source = event.getSource();
         if (source.equals(botaoLivros))
             trocaParaJanelaLivros();
         else if (source.equals(botaoListagem))
             trocaParaJanelaListagem();
         else if (source.equals(botaoIncluir)) {
-            incluirRevistaNoAcervo();
+            try {
+                validaParseInteiros();
+                incluirRevistaNoCatalogo();
+            } catch (Exception ignored){}
         }
     }
 
@@ -82,27 +85,35 @@ public class JanelaRevistas extends JanelaInput {
         new JanelaLivros(listagem);
     }
 
-    private void incluirRevistaNoAcervo() {
+    private void validaParseInteiros() throws Exception {
         try {
-            String titulo = campoTitulo.getText();
-            int ano = Integer.parseInt(campoAno.getText());
-            String orgao = campoOrgao.getText();
-            int volume = Integer.parseInt(campoVolume.getText());
-            int numero = Integer.parseInt(campoNumero.getText());
-
-            servicoRevista.adicionaRevista(titulo, ano, orgao, volume, numero);
-
-            JOptionPane.showMessageDialog(this, "Obra literária adicionada.", "Sucesso", JOptionPane.INFORMATION_MESSAGE);
-            limpaCampos();
+            Integer.parseInt(campoAno.getText());
+            Integer.parseInt(campoVolume.getText());
+            Integer.parseInt(campoNumero.getText());
         } catch (NumberFormatException erroParse) {
             JOptionPane.showMessageDialog(
                     this,
                     "Campos volume, número e ano devem ser números válidos",
                     "Erro",
                     JOptionPane.ERROR_MESSAGE);
-        } catch (Exception erroCampo) {
-            JOptionPane.showMessageDialog(this, erroCampo.getMessage(), "Erro", JOptionPane.ERROR_MESSAGE);
+            throw new Exception();
         }
+    }
+
+    private void incluirRevistaNoCatalogo() {
+        String titulo = campoTitulo.getText();
+        String orgao = campoOrgao.getText();
+        int ano = Integer.parseInt(campoAno.getText());
+        int volume = Integer.parseInt(campoVolume.getText());
+        int numero = Integer.parseInt(campoNumero.getText());
+        try {
+            servicoRevista.adicionaRevista(titulo, ano, orgao, volume, numero);
+            JOptionPane.showMessageDialog(this, "Revista adicionada ao acervo.", "Sucesso", JOptionPane.INFORMATION_MESSAGE);
+            limpaCampos();
+        } catch (Exception campoInvalido) {
+            JOptionPane.showMessageDialog(this, campoInvalido.getMessage(), "Erro", JOptionPane.ERROR_MESSAGE);
+        }
+
     }
 
     private void limpaCampos() {
