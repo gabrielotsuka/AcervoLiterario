@@ -1,7 +1,7 @@
 package com.br.gabrielotsuka.janelas;
 
-import com.br.gabrielotsuka.dados.Livro;
 import com.br.gabrielotsuka.repositorio.Listagem;
+import com.br.gabrielotsuka.servicos.ServicoLivro;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
@@ -14,8 +14,11 @@ public class JanelaLivros extends JanelaInput {
 
     JButton botaoRevistas = new JButton("Revistas");
 
+    ServicoLivro servicoLivro;
+
     public JanelaLivros(Listagem listagem) {
         super(listagem);
+        servicoLivro = new ServicoLivro(listagem);
         montaCabecalho("Livros");
         montaAno();
         montaAutor();
@@ -58,9 +61,7 @@ public class JanelaLivros extends JanelaInput {
     }
 
     private void incluirLivroNoAcervo() {
-        Livro livro = new Livro(
-                campoAutor.getText(), campoTitulo.getText(), campoAno.getText());
-        incluirObraNoAcervo(livro);
+        servicoLivro.adicionaLivro(campoAutor.getText(), campoTitulo.getText(), campoAno.getText());
         limpaCampos();
     }
 
