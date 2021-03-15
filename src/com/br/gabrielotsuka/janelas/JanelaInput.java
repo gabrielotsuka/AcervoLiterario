@@ -26,6 +26,21 @@ public abstract class JanelaInput extends JFrame implements ActionListener {
         this.listagem = listagem;
     }
 
+    protected void montaCabecalho(String texto) {
+        configuraRotulo(rotuloCabecalho, texto, 25);
+        rotuloCabecalho.setHorizontalAlignment(SwingConstants.CENTER);
+        rotuloCabecalho.setBounds(0,15, 480, 25);
+        add(rotuloCabecalho);
+    }
+
+    protected void montaTitulo() {
+        configuraRotulo(rotuloTitulo, "Titulo:", 20);
+        rotuloTitulo.setBounds(20,50, 65, 25);
+        add(rotuloTitulo);
+        campoTitulo.setBounds(90, 50, 380, 25);
+        add(campoTitulo);
+    }
+
     protected void configuraRotulo(JLabel label, String texto, Integer fontSize) {
         label.setText(texto);
         label.setFont(new Font("", Font.PLAIN, fontSize));
@@ -44,13 +59,6 @@ public abstract class JanelaInput extends JFrame implements ActionListener {
         add(painelBotoes);
     }
 
-    protected void montaCabecalho(String texto) {
-        configuraRotulo(rotuloCabecalho, texto, 25);
-        rotuloCabecalho.setHorizontalAlignment(SwingConstants.CENTER);
-        rotuloCabecalho.setBounds(0,15, 480, 25);
-        add(rotuloCabecalho);
-    }
-
     protected void montaFrameInput() {
         setLayout(null);
         setVisible(true);
@@ -59,20 +67,12 @@ public abstract class JanelaInput extends JFrame implements ActionListener {
         setSize(new Dimension(480, 300));
     }
 
-    protected void montaTitulo() {
-        configuraRotulo(rotuloTitulo, "Titulo:", 20);
-        rotuloTitulo.setBounds(20,50, 65, 25);
-        add(rotuloTitulo);
-        campoTitulo.setBounds(90, 50, 380, 25);
-        add(campoTitulo);
-    }
-
     protected void trocaParaJanelaListagem() {
         dispose();
         new JanelaListagem(listagem);
     }
 
-    protected void validaParseAno() throws Exception {
+    protected void validaParseInteiroCampoAno() throws Exception {
         try {
             Integer.parseInt(campoAno.getText());
         } catch (NumberFormatException erroParse) {

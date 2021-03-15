@@ -16,6 +16,13 @@ public class JanelaListagem extends JFrame {
         montaFrameOutput();
     }
 
+    private void montaCabecalho() {
+        rotuloCabecalho.setFont(new Font("", Font.PLAIN, 25));
+        rotuloCabecalho.setHorizontalAlignment(SwingConstants.CENTER);
+        rotuloCabecalho.setBounds(0,15, 580, 30);
+        add(rotuloCabecalho);
+    }
+
     private JTextArea montaAreaTexto(String texto) {
         JTextArea areaTexto = new JTextArea();
         areaTexto.setText(texto);
@@ -32,13 +39,6 @@ public class JanelaListagem extends JFrame {
         JScrollPane areaTextoScroll = new JScrollPane(areaTexto);
         areaTextoScroll.setBounds(20, 50, 540, 165);
         add(areaTextoScroll);
-    }
-
-    private void montaCabecalho() {
-        rotuloCabecalho.setFont(new Font("", Font.PLAIN, 25));
-        rotuloCabecalho.setHorizontalAlignment(SwingConstants.CENTER);
-        rotuloCabecalho.setBounds(0,15, 580, 30);
-        add(rotuloCabecalho);
     }
 
     private void montaFrameOutput() {

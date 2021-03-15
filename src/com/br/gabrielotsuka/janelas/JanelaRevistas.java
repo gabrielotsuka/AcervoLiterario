@@ -23,12 +23,12 @@ public class JanelaRevistas extends JanelaInput {
     public JanelaRevistas(Listagem listagem) {
         super(listagem);
         servicoRevista = new ServicoRevista(listagem);
-        montaAno();
+        montaTitulo();
         montaBotoes(botaoLivros);
         montaCabecalho("Revistas");
+        montaAno();
         montaNumero();
         montaOrgao();
-        montaTitulo();
         montaVolume();
         montaFrameInput();
     }
@@ -68,22 +68,29 @@ public class JanelaRevistas extends JanelaInput {
     @Override
     public void actionPerformed(ActionEvent event) {
         Object source = event.getSource();
-        if (source.equals(botaoLivros)){
-            dispose();
-            new JanelaLivros(listagem);
-        }
+        if (source.equals(botaoLivros))
+            trocaParaJanelaLivros();
         else if (source.equals(botaoListagem))
             trocaParaJanelaListagem();
         else if (source.equals(botaoIncluir)) {
-            try {
-                validaParseInteiros();
-                incluirRevistaNoCatalogo();
-            } catch (Exception ignored){}
+            tentaIncluirRevistaNoAcervo();
         }
     }
 
+    private void trocaParaJanelaLivros() {
+        dispose();
+        new JanelaLivros(listagem);
+    }
+
+    private void tentaIncluirRevistaNoAcervo() {
+        try {
+            validaParseInteiros();
+            apresentaTelaOpcional();
+        } catch (Exception excecaoTratadaNaFuncaoDValidaParse){}
+    }
+
     private void validaParseInteiros() throws Exception {
-        validaParseAno();
+        validaParseInteiroCampoAno();
         try {
             Integer.parseInt(campoVolume.getText());
             Integer.parseInt(campoNumero.getText());
@@ -97,7 +104,7 @@ public class JanelaRevistas extends JanelaInput {
         }
     }
 
-    private void incluirRevistaNoCatalogo() {
+    private void apresentaTelaOpcional() {
         String titulo = campoTitulo.getText();
         String orgao = campoOrgao.getText();
         int ano = Integer.parseInt(campoAno.getText());

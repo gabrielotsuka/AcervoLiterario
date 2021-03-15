@@ -27,14 +27,6 @@ public class JanelaLivros extends JanelaInput {
         montaFrameInput();
     }
 
-    private void montaAutor() {
-        configuraRotulo(rotuloAutor, "Autor:", 20);
-        rotuloAutor.setBounds(20,90, 65, 25);
-        add(rotuloAutor);
-        campoAutor.setBounds(90, 90, 380, 25);
-        add(campoAutor);
-    }
-
     private void montaAno() {
         configuraRotulo(rotuloAno, "Ano:", 20);
         rotuloAno.setBounds(20,130, 65, 25);
@@ -43,23 +35,39 @@ public class JanelaLivros extends JanelaInput {
         add(campoAno);
     }
 
+    private void montaAutor() {
+        configuraRotulo(rotuloAutor, "Autor:", 20);
+        rotuloAutor.setBounds(20,90, 65, 25);
+        add(rotuloAutor);
+        campoAutor.setBounds(90, 90, 380, 25);
+        add(campoAutor);
+    }
+
     @Override
     public void actionPerformed(ActionEvent e) {
         Object source = e.getSource();
         if(source.equals(botaoRevistas)) {
-            dispose();
-            new JanelaRevistas(listagem);
+            trocaParaJanelaRevistas();
         } else if (source.equals(botaoListagem)) {
             trocaParaJanelaListagem();
         } else if (source.equals(botaoIncluir)) {
-            try {
-                validaParseAno();
-                incluirLivroNoAcervo();
-            } catch (Exception ignored) {}
+            tentaIncluirLivroNoAcervo();
         }
     }
 
-    private void incluirLivroNoAcervo() {
+    private void trocaParaJanelaRevistas() {
+        dispose();
+        new JanelaRevistas(listagem);
+    }
+
+    private void tentaIncluirLivroNoAcervo() {
+        try {
+            validaParseInteiroCampoAno();
+            apresentaTelaOpcional();
+        } catch (Exception excecaoTratadaNaFuncaoValidaParse) {}
+    }
+
+    private void apresentaTelaOpcional() {
         int ano = Integer.parseInt(campoAno.getText());
         String autor = campoAutor.getText();
         String titulo = campoTitulo.getText();
