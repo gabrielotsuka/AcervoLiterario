@@ -84,5 +84,10 @@ public abstract class JanelaInput extends JFrame implements ActionListener {
             throw new Exception();
         }
     }
+
+    protected void limpaCamposComuns() {
+        campoAno.setText("");
+        campoTitulo.setText("");
+    }
 }
 

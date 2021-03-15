@@ -47,7 +47,8 @@ public class JanelaLivros extends JanelaInput {
     public void actionPerformed(ActionEvent e) {
         Object source = e.getSource();
         if(source.equals(botaoRevistas)) {
-            trocaParaJanelaRevistas();
+            dispose();
+            new JanelaRevistas(listagem);
         } else if (source.equals(botaoListagem)) {
             trocaParaJanelaListagem();
         } else if (source.equals(botaoIncluir)) {
@@ -56,11 +57,6 @@ public class JanelaLivros extends JanelaInput {
                 incluirLivroNoAcervo();
             } catch (Exception ignored) {}
         }
-    }
-
-    private void trocaParaJanelaRevistas() {
-        dispose();
-        new JanelaRevistas(listagem);
     }
 
     private void incluirLivroNoAcervo() {
@@ -77,8 +73,7 @@ public class JanelaLivros extends JanelaInput {
     }
 
     private void limpaCampos() {
+        limpaCamposComuns();
         campoAutor.setText("");
-        campoAno.setText("");
-        campoTitulo.setText("");
     }
 }
