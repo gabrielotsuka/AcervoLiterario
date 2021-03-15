@@ -86,14 +86,14 @@ public class JanelaRevistas extends JanelaInput {
     }
 
     private void validaParseInteiros() throws Exception {
+        validaParseAno();
         try {
-            Integer.parseInt(campoAno.getText());
             Integer.parseInt(campoVolume.getText());
             Integer.parseInt(campoNumero.getText());
         } catch (NumberFormatException erroParse) {
             JOptionPane.showMessageDialog(
                     this,
-                    "Campos volume, número e ano devem ser números válidos",
+                    "Campos número e volume devem ser números válidos",
                     "Erro",
                     JOptionPane.ERROR_MESSAGE);
             throw new Exception();

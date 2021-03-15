@@ -52,7 +52,7 @@ public class JanelaLivros extends JanelaInput {
             trocaParaJanelaListagem();
         } else if (source.equals(botaoIncluir)) {
             try {
-                validaParseInteiro();
+                validaParseAno();
                 incluirLivroNoAcervo();
             } catch (Exception ignored) {}
         }
@@ -61,19 +61,6 @@ public class JanelaLivros extends JanelaInput {
     private void trocaParaJanelaRevistas() {
         dispose();
         new JanelaRevistas(listagem);
-    }
-
-    private void validaParseInteiro() throws Exception {
-        try {
-            Integer.parseInt(campoAno.getText());
-        } catch (NumberFormatException erroParse) {
-            JOptionPane.showMessageDialog(
-                    this,
-                    "Campo ano deve ser um número válido",
-                    "Erro",
-                    JOptionPane.ERROR_MESSAGE);
-            throw new Exception();
-        }
     }
 
     private void incluirLivroNoAcervo() {

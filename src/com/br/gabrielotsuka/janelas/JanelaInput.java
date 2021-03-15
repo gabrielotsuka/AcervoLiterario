@@ -71,5 +71,18 @@ public abstract class JanelaInput extends JFrame implements ActionListener {
         dispose();
         new JanelaListagem(listagem);
     }
+
+    protected void validaParseAno() throws Exception {
+        try {
+            Integer.parseInt(campoAno.getText());
+        } catch (NumberFormatException erroParse) {
+            JOptionPane.showMessageDialog(
+                    this,
+                    "Campo ano deve ser um número válido",
+                    "Erro",
+                    JOptionPane.ERROR_MESSAGE);
+            throw new Exception();
+        }
+    }
 }
 
