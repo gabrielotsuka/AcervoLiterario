@@ -72,8 +72,10 @@ public class JanelaRevistas extends JanelaInput {
             trocaParaJanelaLivros();
         else if (source.equals(botaoListagem))
             trocaParaJanelaListagem();
-        else if (source.equals(botaoIncluir))
+        else if (source.equals(botaoIncluir)) {
             incluirRevistaNoAcervo();
+            limpaCampos();
+        }
     }
 
     private void trocaParaJanelaLivros() {
@@ -82,10 +84,13 @@ public class JanelaRevistas extends JanelaInput {
     }
 
     private void incluirRevistaNoAcervo() {
-        servicoRevista.adicionaRevista(
-                campoTitulo.getText(), campoAno.getText(), campoOrgao.getText(),
-                campoVolume.getText(), campoNumero.getText());
-        limpaCampos();
+        String titulo = campoTitulo.getText();
+        int ano = Integer.parseInt(campoAno.getText());
+        String orgao = campoOrgao.getText();
+        int volume = Integer.parseInt(campoVolume.getText());
+        int numero = Integer.parseInt(campoNumero.getText());
+
+        servicoRevista.adicionaRevista(titulo, ano, orgao, volume, numero);
     }
 
     private void limpaCampos() {

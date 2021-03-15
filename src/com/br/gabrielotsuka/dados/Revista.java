@@ -2,10 +2,10 @@ package com.br.gabrielotsuka.dados;
 
 public class Revista extends ObraLiteraria {
     private String orgao;
-    private String volume;
-    private String numero;
+    private int volume;
+    private int numero;
 
-    public Revista(String titulo, String ano, String orgao, String volume, String numero) {
+    public Revista(String titulo, int ano, String orgao, int volume, int numero) {
         super(titulo, ano);
         this.orgao = orgao;
         this.volume = volume;

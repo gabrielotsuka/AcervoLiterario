@@ -52,6 +52,7 @@ public class JanelaLivros extends JanelaInput {
             trocaParaJanelaListagem();
         } else if (source.equals(botaoIncluir)) {
             incluirLivroNoAcervo();
+            limpaCampos();
         }
     }
 
@@ -61,8 +62,10 @@ public class JanelaLivros extends JanelaInput {
     }
 
     private void incluirLivroNoAcervo() {
-        servicoLivro.adicionaLivro(campoAutor.getText(), campoTitulo.getText(), campoAno.getText());
-        limpaCampos();
+        String autor = campoAutor.getText();
+        String titulo = campoTitulo.getText();
+        int ano = Integer.parseInt(campoAno.getText());
+        servicoLivro.adicionaLivro(autor, titulo, ano);
     }
 
     private void limpaCampos() {

@@ -10,7 +10,7 @@ public class ServicoLivro {
         this.listagem = listagem;
     }
 
-    public void adicionaLivro(String autor, String titulo, String ano) {
+    public void adicionaLivro(String autor, String titulo, int ano) {
         Livro livro = new Livro(autor, titulo, ano);
         listagem.adicionaObraLiteraria(livro);
     }

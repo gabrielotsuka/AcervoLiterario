@@ -10,7 +10,7 @@ public class ServicoRevista {
         this.listagem = listagem;
     }
 
-    public void adicionaRevista(String titulo, String ano, String orgao, String volume, String numero) {
+    public void adicionaRevista(String titulo, int ano, String orgao, int volume, int numero) {
         Revista revista = new Revista(titulo, ano, orgao, volume, numero);
         listagem.adicionaObraLiteraria(revista);
     }
