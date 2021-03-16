@@ -1,7 +1,7 @@
 package com.br.gabrielotsuka;
 
 import com.br.gabrielotsuka.janelas.JanelaLivros;
-import com.br.gabrielotsuka.repositorio.Listagem;
+import com.br.gabrielotsuka.repositorios.Listagem;
 
 public class Main {
 

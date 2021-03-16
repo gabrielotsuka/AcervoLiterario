@@ -1,8 +1,8 @@
 package com.br.gabrielotsuka.servicos;
 
 import com.br.gabrielotsuka.dados.Revista;
-import com.br.gabrielotsuka.repositorio.Listagem;
-import com.br.gabrielotsuka.validador.ValidadorObraLiteraria;
+import com.br.gabrielotsuka.repositorios.Listagem;
+import com.br.gabrielotsuka.validadores.ValidadorObraLiteraria;
 
 public class ServicoRevista {
     Listagem listagem;

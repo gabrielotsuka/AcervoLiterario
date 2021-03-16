@@ -1,4 +1,4 @@
-package com.br.gabrielotsuka.repositorio;
+package com.br.gabrielotsuka.repositorios;
 
 import com.br.gabrielotsuka.dados.ObraLiteraria;
 

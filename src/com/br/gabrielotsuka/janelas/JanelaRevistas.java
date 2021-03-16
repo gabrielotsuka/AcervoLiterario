@@ -1,6 +1,6 @@
 package com.br.gabrielotsuka.janelas;
 
-import com.br.gabrielotsuka.repositorio.Listagem;
+import com.br.gabrielotsuka.repositorios.Listagem;
 import com.br.gabrielotsuka.servicos.ServicoRevista;
 
 import javax.swing.*;

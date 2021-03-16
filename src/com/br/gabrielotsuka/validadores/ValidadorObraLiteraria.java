@@ -1,4 +1,4 @@
-package com.br.gabrielotsuka.validador;
+package com.br.gabrielotsuka.validadores;
 
 import java.util.Calendar;
 
