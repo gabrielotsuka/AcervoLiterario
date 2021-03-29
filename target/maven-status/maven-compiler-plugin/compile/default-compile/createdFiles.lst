@@ -1,0 +1,13 @@
+servicos/ServicoRevista.class
+repositorio/RepositorioRevista.class
+servicos/ServicoLivro.class
+repositorio/RepositorioLivro.class
+Main.class
+janelas/JanelaListagem.class
+janelas/JanelaRevistas.class
+dados/Revista.class
+dados/ObraLiteraria.class
+janelas/JanelaInput.class
+janelas/JanelaLivros.class
+dados/Livro.class
+validadores/ValidadorObraLiteraria.class
