@@ -15,7 +15,32 @@ public class Revista extends ObraLiteraria {
         this.numero = numero;
     }
 
-    public Revista() {}
+    public Revista() {
+    }
+
+    public String getOrgao() {
+        return orgao;
+    }
+
+    public void setOrgao(String orgao) {
+        this.orgao = orgao;
+    }
+
+    public int getVolume() {
+        return volume;
+    }
+
+    public void setVolume(int volume) {
+        this.volume = volume;
+    }
+
+    public int getNumero() {
+        return numero;
+    }
+
+    public void setNumero(int numero) {
+        this.numero = numero;
+    }
 
     @Override
     public String toString() {

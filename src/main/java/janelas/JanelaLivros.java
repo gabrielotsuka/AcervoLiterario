@@ -1,7 +1,9 @@
 package janelas;
 
+import repositorio.RepositorioLivro;
 import servicos.ServicoLivro;
 
+import javax.persistence.EntityManager;
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 
@@ -14,9 +16,12 @@ public class JanelaLivros extends JanelaInput {
     JButton botaoRevistas = new JButton("Revistas");
 
     ServicoLivro servicoLivro;
+    RepositorioLivro repositorioLivro;
 
-    public JanelaLivros() {
-        servicoLivro = new ServicoLivro();
+    public JanelaLivros(EntityManager entityManager) {
+        super(entityManager);
+        repositorioLivro = new RepositorioLivro(entityManager);
+        servicoLivro = new ServicoLivro(entityManager);
         montaCabecalho("Livros");
         montaAno();
         montaAutor();
@@ -55,7 +60,7 @@ public class JanelaLivros extends JanelaInput {
 
     private void trocaParaJanelaRevistas() {
         dispose();
-        new JanelaRevistas();
+        new JanelaRevistas(entityManager);
     }
 
     private void tentaIncluirLivroNoAcervo() {

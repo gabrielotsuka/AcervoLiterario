@@ -1,5 +1,8 @@
 package janelas;
 
+import servicos.ServicoListagem;
+
+import javax.persistence.EntityManager;
 import javax.swing.*;
 import java.awt.*;
 
@@ -7,10 +10,15 @@ public class JanelaListagem extends JFrame {
 
     JLabel rotuloCabecalho = new JLabel("Listagem");
 
-    public JanelaListagem() {
+    ServicoListagem servicoListagem;
+
+    public JanelaListagem(EntityManager entityManager) {
+        servicoListagem = new ServicoListagem(entityManager);
         montaCabecalho();
-//        JTextArea areaTexto = montaAreaTexto(listagem.getListagem());
-//        montaPainelScroll(areaTexto);
+        String livros = servicoListagem.getLivrosEmString();
+        String revistas = servicoListagem.getRevistasEmString();
+        JTextArea areaTexto = montaAreaTexto(livros + revistas);
+        montaPainelScroll(areaTexto);
         montaFrameOutput();
     }
 

@@ -1,6 +1,7 @@
 package janelas;
 
 
+import javax.persistence.EntityManager;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionListener;
@@ -18,6 +19,12 @@ public abstract class JanelaInput extends JFrame implements ActionListener {
 
     protected JButton botaoIncluir = new JButton("Incluir");
     protected JButton botaoListagem = new JButton("Listagem");
+
+    EntityManager entityManager;
+
+    public JanelaInput (EntityManager entityManager) {
+        this.entityManager = entityManager;
+    }
 
     protected void montaCabecalho(String texto) {
         configuraRotulo(rotuloCabecalho, texto, 25);
@@ -62,7 +69,7 @@ public abstract class JanelaInput extends JFrame implements ActionListener {
 
     protected void trocaParaJanelaListagem() {
         dispose();
-        new JanelaListagem();
+        new JanelaListagem(entityManager);
     }
 
     protected void validaParseInteiroCampoAno() throws Exception {
